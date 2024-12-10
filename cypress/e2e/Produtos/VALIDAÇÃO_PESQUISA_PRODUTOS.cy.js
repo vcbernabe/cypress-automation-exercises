@@ -45,14 +45,30 @@ describe('Validação pesquisa produto', () => {
         expect(productName).to.include('Polo');
       });
 
-      
-
-    
     }); 
+
+    it('Pesquisa "Jeans"', () => {
+       
+
+      cy.get('#search_product')
+      .type('Jeans')
+      .should('be.visible')
+      .and('have.attr', 'placeholder', 'Search Product');
+
+      cy.get('#submit_search').should('be.visible').click();
+
+      cy.get('h2.text-center').contains('Searched Products');
+
+      cy.get('.features_items .productinfo p').each(($el) => {
+        const productName = $el.text();
+        expect(productName).to.include('Jeans');
+      });
+
+    }); 
+
 
     it('Pesquisa "Dress"', () => {
        
-
       cy.get('#search_product')
       .type('Dress')
       .should('be.visible')
@@ -75,11 +91,8 @@ describe('Validação pesquisa produto', () => {
           cy.log(`Produto aceito: ${productName}`);
         }
       
-
       }); 
 
     }); 
 
-      
-    
-  });
+ });
