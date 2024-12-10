@@ -114,6 +114,5 @@ describe('Sucesso - Cadastro de novo usuário', () => {
         cy.contains('Account Deleted!').should('be.visible')
     });
 
-    
 
 });
